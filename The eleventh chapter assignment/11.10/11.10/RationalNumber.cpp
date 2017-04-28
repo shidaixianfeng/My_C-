@@ -63,7 +63,7 @@ istream & operator >> (istream & input, RationalNumber &A)
 
 ostream & operator<<(ostream &output, RationalNumber &A)
 {
-	if(A.m_iNumeration<A.m_iDenominator)
+	/*if(A.m_iNumeration<A.m_iDenominator)
 	{
 		if(A.m_iDenominator%A.m_iNumeration==0)
 		{
@@ -78,8 +78,33 @@ ostream & operator<<(ostream &output, RationalNumber &A)
 			output << A.m_iNumeration / A.m_iDenominator;
 			return output;
 		}
+	}*/
+	int Num = A.m_iNumeration;
+	int Den = A.m_iDenominator;
+	int gcd = 0;
+	if(Num>Den)
+	{
+		int temp = Num%Den;
+		while(temp!=0)
+		{
+			Num = Den;
+			Den = temp;
+			temp = Num%Den;
+		}
+		gcd = Den;
 	}
-	output << A.m_iNumeration << "/" << A.m_iDenominator;
+	else
+	{
+		int temp = Den%Num;
+		while (temp != 0)
+		{
+			Den = Num;
+			Num= temp;
+			temp = Den%Num;
+		}
+		gcd = Num;
+	}
+	output << A.m_iNumeration/gcd << "/" << A.m_iDenominator/gcd;
 	return output;
 	// TODO: 在此处插入 return 语句
 }
