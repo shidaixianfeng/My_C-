@@ -1,0 +1,10 @@
+*.db
+*.sln
+*.vcxproj
+*.filters
+*.users
+*.cd
+Debug/
+*.opendb
+*.vs
+12 chapter */
